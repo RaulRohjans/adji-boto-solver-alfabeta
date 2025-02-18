@@ -1,0 +1,4 @@
+
+*.lisp~
+execution_output.txt
+log.dat
