@@ -63,28 +63,69 @@
   "Logs and prints when the algorithm reaches a terminal state."
   (let ((log-path "/home/raul/Documents/GitHub/adji-boto-solver-alfabeta/log.dat"))
     (with-open-file (log log-path :direction :output :if-exists :append :if-does-not-exist :create)
-      (format log "Terminal State Reached~%")
-      (format log "State: ~A~%Depth: ~A~%Heuristic: ~A~%Time: ~,6f seconds~%~%" 
-              (node-entry state) depth heur elapsed-time))
+      (format log "~%========================================~%")
+      (format log "TERMINAL STATE ACHIEVED~%")
+      (format log "========================================~%")
+      (format log "Time Elapsed: ~,6f seconds~%" elapsed-time)
+      (format log "Search Depth: ~A~%" depth)
+      (format log "Heuristic Value: ~A~%" heur)
+      (format log "Game State:~%    ~A~%" (node-entry state))
+      (format log "========================================~%~%"))
+    
     ;; Print to console
-    (format t "Terminal State Reached~%")
-    (format t "State: ~A~%Depth: ~A~%Heuristic: ~A~%Time: ~,6f seconds~%~%" 
-            (node-entry state) depth heur elapsed-time)))
+    (format t "~%========================================~%")
+    (format t "TERMINAL STATE ACHIEVED~%")
+    (format t "========================================~%")
+    (format t "Time Elapsed: ~,6f seconds~%" elapsed-time)
+    (format t "Search Depth: ~A~%" depth)
+    (format t "Heuristic Value: ~A~%" heur)
+    (format t "Game State:~%    ~A~%" (node-entry state))
+    (format t "========================================~%~%")))
+
 
 (defun log-final-state (state best-value checked-nodes alfa-prunes beta-prunes elapsed-time)
   "Logs and prints the final state of the search."
   (let ((log-path "/home/raul/Documents/GitHub/adji-boto-solver-alfabeta/log.dat"))
     (with-open-file (log log-path :direction :output :if-exists :append :if-does-not-exist :create)
-      (format log "Final State: ~A~%Best Value: ~A~%Nodes Analyzed: ~A~%Alpha Cuts: ~A~%Beta Cuts: ~A~%Time: ~,6f seconds~%~%" 
-              (node-entry state) best-value checked-nodes alfa-prunes beta-prunes elapsed-time))
+      (format log "~%========================================~%")
+      (format log "FINAL STATE EVALUATION~%")
+      (format log "========================================~%")
+      (format log "Best Evaluated Value: ~A~%" best-value)
+      (format log "Nodes Analyzed: ~A~%" checked-nodes)
+      (format log "Alpha Prunes: ~A | Beta Prunes: ~A~%" alfa-prunes beta-prunes)
+      (format log "Time Elapsed: ~,6f seconds~%" elapsed-time)
+      (format log "Final Game State:~%    ~A~%" (node-entry state))
+      (format log "========================================~%~%"))
+    
     ;; Print to console
-    (format t "Final State: ~A~%Best Value: ~A~%Nodes Analyzed: ~A~%Alpha Cuts: ~A~%Beta Cuts: ~A~%Time: ~,6f seconds~%~%" 
-            (node-entry state) best-value checked-nodes alfa-prunes beta-prunes elapsed-time)))
+    (format t "~%========================================~%")
+    (format t "FINAL STATE EVALUATION~%")
+    (format t "========================================~%")
+    (format t "Best Evaluated Value: ~A~%" best-value)
+    (format t "Nodes Analyzed: ~A~%" checked-nodes)
+    (format t "Alpha Prunes: ~A | Beta Prunes: ~A~%" alfa-prunes beta-prunes)
+    (format t "Time Elapsed: ~,6f seconds~%" elapsed-time)
+    (format t "Final Game State:~%    ~A~%" (node-entry state))
+    (format t "========================================~%~%")))
+
 
 (defun log-prune (type state alfa beta)
   "Logs and prints when an Alpha or Beta cut-off occurs."
   (let ((log-path "/home/raul/Documents/GitHub/adji-boto-solver-alfabeta/log.dat"))
     (with-open-file (log log-path :direction :output :if-exists :append :if-does-not-exist :create)
-      (format log "Cut-off (~A) at State: ~A~%Alpha: ~A, Beta: ~A~%~%" type (node-entry state) alfa beta))
+      (format log "~%========================================~%")
+      (format log "PRUNING EVENT DETECTED~%")
+      (format log "========================================~%")
+      (format log "Prune Type: ~A~%" type)
+      (format log "Pruned State:~%    ~A~%" (node-entry state))
+      (format log "Alpha: ~A | Beta: ~A~%" alfa beta)
+      (format log "========================================~%~%"))
+    
     ;; Print to console
-    (format t "Cut-off (~A) at State: ~A~%Alpha: ~A, Beta: ~A~%~%" type (node-entry state) alfa beta)))
+    (format t "~%========================================~%")
+    (format t "PRUNING EVENT DETECTED~%")
+    (format t "========================================~%")
+    (format t "Prune Type: ~A~%" type)
+    (format t "Pruned State:~%    ~A~%" (node-entry state))
+    (format t "Alpha: ~A | Beta: ~A~%" alfa beta)
+    (format t "========================================~%~%")))
