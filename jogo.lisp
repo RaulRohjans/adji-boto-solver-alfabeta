@@ -126,32 +126,3 @@
   )
 )
 
-(defun show-execution-path (node &optional (isRecursive nil))
-  "Shows the executed path until the given node and writes it to a file."
-  (let ((file-path (concatenate 'string (get-project-path) "/execution_output.txt")))
-    (with-open-file (file file-path :direction :output :if-exists :supersede)
-      (let ((output ""))
-        (labels ((collect-path (n)
-                   (when n
-                     (setf output (concatenate 'string output (format nil "~A ~A ~A ~A~%" (node-entry n) (node-depth n) (node-removed-pieces n) (node-heuristic n))))
-                     (format t "~A ~A ~A ~A~%" (node-entry n) (node-depth n) (node-removed-pieces n) (node-heuristic n))
-                     (collect-path (node-parent n)))))
-          (if (and (null node) (null isRecursive))
-              (progn
-                (format t "There is no path to show.")
-                (setf output "There is no path to show."))
-              (collect-path node))
-          (write-sequence output file)
-        )
-      )
-    )
-  )
-)
-
-
-
-
-
-
-
-
