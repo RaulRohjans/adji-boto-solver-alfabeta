@@ -56,7 +56,12 @@
                                 (process-node nil value new-alfa beta checked-nodes (1+ alfa-prunes) beta-prunes))
                                (t
                                 (process-node (cdr children) value new-alfa new-beta checked-nodes alfa-prunes beta-prunes))))))))
-            (process-node children top-value alfa beta checked-nodes alfa-prunes beta-prunes))))))
+            (process-node children top-value alfa beta checked-nodes alfa-prunes beta-prunes)
+          )
+        )
+    )
+  )
+)
 
 
 (defun log-terminal-state (state depth heur elapsed-time)
@@ -80,7 +85,9 @@
     (format t "Search Depth: ~A~%" depth)
     (format t "Heuristic Value: ~A~%" heur)
     (format t "Game State:~%    ~A~%" (node-entry state))
-    (format t "========================================~%~%")))
+    (format t "========================================~%~%")
+  )
+)
 
 
 (defun log-final-state (state best-value checked-nodes alfa-prunes beta-prunes elapsed-time)
@@ -106,7 +113,9 @@
     (format t "Alpha Prunes: ~A | Beta Prunes: ~A~%" alfa-prunes beta-prunes)
     (format t "Time Elapsed: ~,6f seconds~%" elapsed-time)
     (format t "Final Game State:~%    ~A~%" (node-entry state))
-    (format t "========================================~%~%")))
+    (format t "========================================~%~%")
+  )
+)
 
 
 (defun log-prune (type state alfa beta)
@@ -128,4 +137,6 @@
     (format t "Prune Type: ~A~%" type)
     (format t "Pruned State:~%    ~A~%" (node-entry state))
     (format t "Alpha: ~A | Beta: ~A~%" alfa beta)
-    (format t "========================================~%~%")))
+    (format t "========================================~%~%")
+  )
+)
