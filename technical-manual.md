@@ -38,6 +38,7 @@ Um nó no algoritmo é representado por uma estrutura que inclui o tabuleiro, a 
 Apesar dos bons resultados obtidos, o Adji-Boto apresenta algumas ladasimitações:
 - Limitação de Profundidade: Em cenários mais complexos (problemas E e F), o algoritmo sofreu um stack overflow, para uma profundidade de 5.
 - Jogador vs CPU: Não foi implementada uma funcionalidade de jogador vs CPU.
+- Limite de Tempo: Não foi implementada uma funcionalidade de limitação de tempo de execução do algoritmo.
 
 ## Análise de Resultados
 Os testes realizados com os problemas fornecidos, para uma profundidade de 5 demonstraram os seguintes resultados:
