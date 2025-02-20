@@ -103,7 +103,7 @@
     (let ((depth (select-depth)))
       (format t "~%Starting MinMax AlfaBeta...~%")
       (let ((res (alfabeta (create-node entry) depth)))
-        (cond (res (show-execution-path res))
+        (cond (res res)
               (T (format t "No solution found."))
         )
       )         
